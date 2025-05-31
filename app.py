@@ -3,6 +3,8 @@ import streamlit_authenticator as stauth
 import os
 import pandas as pd
 
+st.set_page_config(layout="wide")
+
 if not os.path.exists("data/expense_data.csv"):
     st.session_state.expense_data = pd.DataFrame(columns=["Item", "Date", "Account", "Category", "Amount"])
     st.session_state.borrow_data = pd.DataFrame(columns=["Name", "Date", "Account", "Amount"])
@@ -48,7 +50,3 @@ with tab4:
     
 with tab5:
     make_settings_tab()
-
-# st.write(st.session_state.expense_data)
-# st.write(st.session_state.borrow_data)
-# st.write(st.session_state.transfer_data)
