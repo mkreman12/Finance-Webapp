@@ -1,6 +1,5 @@
 import streamlit as st
 from utils import save_data
-import pandas as pd
 
 
 def make_settings_tab():
