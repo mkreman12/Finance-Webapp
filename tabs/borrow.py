@@ -20,7 +20,8 @@ def make_borrow_tab():
             selected_month = st.selectbox(
                 "📅 Filter by Month",
                 options=["All"] + sorted(months, reverse=True),
-                key=f"month_filter_{person}"
+                key=f"month_filter_{person}",
+                index=1
             )
 
             if selected_month != "All":

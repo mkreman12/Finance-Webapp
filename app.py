@@ -2,7 +2,7 @@ import streamlit as st
 import os
 import pandas as pd
 
-st.set_page_config(layout="wide")
+st.set_page_config(layout="wide", page_title='Finance Tracker', page_icon='💰')
 
 # 📁 Data Initialization
 if not os.path.exists("data/expense_data.csv"):
@@ -23,16 +23,17 @@ from forms import *
 from tabs import *
 
 # 💰 Main Header
-st.header("💰 Financial Tracker")
-st.subheader("📆 Track your expenses, income, and borrowings")
+st.header("💰 Finance Tracker")
+st.subheader("Track your expenses, income, and borrowings")
 
-tab1, tab2, tab3, tab4, tab5 = st.tabs(
+tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs(
     [
         "📝 Entry",
         "🏦 Accounts",
         "💸 Borrowings",
         "📊 Analysis",
-        "⚙️ Settings"
+        "⚙️ Settings",
+        "✏️ Edit"
     ]
 )
 
@@ -50,3 +51,6 @@ with tab4:
     
 with tab5:
     make_settings_tab()
+
+with tab6:
+    make_edit_tab()

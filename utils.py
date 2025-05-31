@@ -38,59 +38,59 @@ def display_data(df):
 
 def display_row(row, type='expense'):
     """
-    Display the DataFrame in a Streamlit app.
+    Display the DataFrame in a Streamlit app with icons.
     """
     match type:
         case 'expense':
             with st.container(border=True):
                 col1, col2, col3, col4 = st.columns(4, gap="small", vertical_alignment="center")
                 with col1:
-                    st.write(f"**{row['Item']}**")
-                    st.write(row['Account'])
+                    st.write(f"💸 **{row['Item']}**")
+                    st.write("🏦 " + str(row['Account']))
                 with col2:
                     st.write(f"**{row['Category']}**")
                 with col3:
-                    st.write(f"<span style='color:red; font-size:20px'><b>{row['Amount']} ₹</b></span>", unsafe_allow_html=True)
+                    st.write(f"<span style='color:red; font-size:20px'><b>{row['Amount']} ₹</b> 🛒</span>", unsafe_allow_html=True)
                 with col4:
-                    st.write(f"{pd.to_datetime(row['Date']).strftime('%I:%M %p')}")
+                    st.write(f"🕒 {pd.to_datetime(row['Date']).strftime('%I:%M %p')}")
 
         case 'income':
             with st.container(border=True):
                 col1, col2, col3, col4 = st.columns(4, gap="small", vertical_alignment="center")
                 with col1:
-                    st.write(f"**{row['Item']}**")
+                    st.write(f"💵 **{row['Item']}**")
                 with col2:
-                    st.write(f"**{row['Account']}**")
+                    st.write(f"🏦 **{row['Account']}**")
                 with col3:
                     st.write(f"<span style='color:green; font-size:20px'><b>{row['Amount']} ₹</b></span>", unsafe_allow_html=True)
                 with col4:
-                    st.write(f"{pd.to_datetime(row['Date']).strftime('%I:%M %p')}")
+                    st.write(f"🕒 {pd.to_datetime(row['Date']).strftime('%I:%M %p')}")
 
         case 'borrow':
             with st.container(border=True):
                 col1, col2, col3, col4 = st.columns(4, gap="small", vertical_alignment="center")
                 with col1:
-                    st.write(f"**{row['Name']}**")
+                    st.write(f"🤝 **{row['Name']}**")
                     if row['Amount'] < 0:
-                        st.write("Borrowed")
+                        st.write("📥 Borrowed")
                     else:
-                        st.write("Lent")
+                        st.write("📤 Lent")
                 with col2:
-                    st.write(f"**{row['Account']}**")
+                    st.write(f"🏦 **{row['Account']}**")
                 with col3:
-                    st.write(f"<span style='color:blue; font-size:20px'><b>{row['Amount']} ₹</b></span>", unsafe_allow_html=True)
+                    st.write(f"<span style='color:blue; font-size:20px'><b>{row['Amount']} ₹</b> 🔄</span>", unsafe_allow_html=True)
                 with col4:
-                    st.write(f"{pd.to_datetime(row['Date']).strftime('%I:%M %p')}")
+                    st.write(f"🕒 {pd.to_datetime(row['Date']).strftime('%I:%M %p')}")
         case 'transfer':
             with st.container(border=True):
                 col1, col2, col3, col4 = st.columns(4, gap="small", vertical_alignment="center")
                 with col1:
-                    st.write(f"**{row['From Account']}**")
-                    st.write("From")
+                    st.write(f"🏦 **{row['From Account']}**")
+                    st.write("⬅️ From")
                 with col2:
-                    st.write(f"**{row['To Account']}**")
-                    st.write("To")
+                    st.write(f"🏦 **{row['To Account']}**")
+                    st.write("➡️ To")
                 with col3:
-                    st.write(f"<span style='color:orange; font-size:20px'><b>{row['Amount']} ₹</b></span>", unsafe_allow_html=True)
+                    st.write(f"<span style='color:orange; font-size:20px'><b>{row['Amount']} ₹</b> 🔁</span>", unsafe_allow_html=True)
                 with col4:
-                    st.write(f"{pd.to_datetime(row['Date']).strftime('%I:%M %p')}")
+                    st.write(f"🕒 {pd.to_datetime(row['Date']).strftime('%I:%M %p')}")

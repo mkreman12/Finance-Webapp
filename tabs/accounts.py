@@ -33,7 +33,7 @@ def make_accounts_tab():
 
             # Month filter
             months = combined_data["Date"].apply(lambda x: pd.to_datetime(x).strftime("%B %Y")).unique()
-            selected_month = st.selectbox("📅 Filter by Month", options=["All"] + sorted(months, reverse=True), key=f"month_filter_{account}")
+            selected_month = st.selectbox("📅 Filter by Month", options=["All"] + sorted(months, reverse=True), key=f"month_filter_{account}", index=1)
 
             if selected_month != "All":
                 filtered_data = combined_data[combined_data["Date"].apply(lambda x: pd.to_datetime(x).strftime("%B %Y")) == selected_month]
